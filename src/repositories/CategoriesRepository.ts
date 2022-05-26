@@ -13,6 +13,7 @@ class CategoriesRepository {
     this.categories = [];
   }
 
+  //Cria uma nova categoria
   create({ name, description }: ICreateCategoryDTO): void {
     const category = new Category();
 
@@ -24,6 +25,18 @@ class CategoriesRepository {
     });
 
     this.categories.push(category);
+  }
+
+  //Lista as categorias existentes
+  list(): Category[] {
+    return this.categories;
+  }
+
+  //Verifica se a categoria já existe 
+  findByName(name: string): Category {
+    const category = this.categories.find(c => c.name === name);
+
+    return category;
   }
 }
 
